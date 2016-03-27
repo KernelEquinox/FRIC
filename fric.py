@@ -51,9 +51,8 @@ args = parser.parse_args()
 if args.method == "custom":
 	if not args.find or not args.replace:
 		parser.error("both -f and -r are required when using --custom")
-
-args.find = args.find.decode("string_escape")
-args.replace = args.replace.decode("string_escape")
+	args.find = args.find.decode("string_escape")
+	args.replace = args.replace.decode("string_escape")
 
 
 #######################
