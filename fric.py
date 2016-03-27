@@ -38,10 +38,22 @@ format_list.add_argument("--noint", action="store_const", dest="interleaved", co
 
 method_parser = parser.add_argument_group("GLITCHING METHODS")
 method_list = method_parser.add_mutually_exclusive_group()
-method_list.add_argument("--custom", action="store_const", dest="method", const="custom", default="wordpad", help="Use a custom transform (not yet implemented)")
+method_list.add_argument("--custom", action="store_const", dest="method", const="custom", default="wordpad", help="Use a custom transform")
 method_list.add_argument("--wordpad", action="store_const", dest="method", const="wordpad", help="Use the Wordpad transform (default)")
 
+custom = parser.add_argument_group("CUSTOM CONTROLS")
+custom.add_argument("-f", action="store", dest="find", metavar="[bytes]", help="Find these chars (e.g. \\x0a\\x0b\\x0d)")
+custom.add_argument("-r", action="store", dest="replace", metavar="[bytes]", help="Convert found chars to this byte sequence")
+custom.add_argument("-n", action="store", dest="ignore", metavar="[bytes]", help="Ignore this char sequence (optional)")
+
 args = parser.parse_args()
+
+if args.method == "custom":
+	if not args.find or not args.replace:
+		parser.error("both -f and -r are required when using --custom")
+
+args.find = args.find.decode("string_escape")
+args.replace = args.replace.decode("string_escape")
 
 
 #######################
@@ -69,6 +81,15 @@ class Image(object):
 	# List of glitching methods and the chars they modify.
 	# More to come soon.
 	def get_glitching_method(self):
+		if args.method == "custom":
+			self.chars_to_replace = []
+			for char in args.find:
+				self.chars_to_replace.append(char)
+			self.chars_to_insert = [args.replace]
+			if args.ignore:
+				self.chars_to_ignore = [args.ignore]
+			else:
+				self.chars_to_ignore = []
 		if args.method == "wordpad":
 			self.chars_to_replace = ["\x0a", "\x0b", "\x0d"]
 			self.chars_to_ignore = ["\x0d\x0a"]
