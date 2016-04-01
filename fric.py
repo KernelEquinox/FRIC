@@ -3,10 +3,23 @@ import sys
 import argparse
 
 #  FRIC (FRamework for Image Corrupting)
-#
-#  Too lazy to put anything fancy here right now.
-#  It's 1:27 am, cut me some slack mang.
-#
+#                                                                     
+# FFFFFFFFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRR   IIIIIIIIII      CCCCCCCCCCCCC
+# F::::::::::::::::::::FR::::::::::::::::R  I::::::::I   CCC::::::::::::C
+# F::::::::::::::::::::FR::::::RRRRRR:::::R I::::::::I CC:::::::::::::::C
+# FF::::::FFFFFFFFF::::FRR:::::R     R:::::RII::::::IIC:::::CCCCCCCC::::C
+#   F:::::F       FFFFFF  R::::R     R:::::R  I::::I C:::::C       CCCCCC
+#   F:::::F               R::::R     R:::::R  I::::IC:::::C              
+#   F::::::FFFFFFFFFF     R::::RRRRRR:::::R   I::::IC:::::C              
+#   F:::::::::::::::F     R:::::::::::::RR    I::::IC:::::C              
+#   F:::::::::::::::F     R::::RRRRRR:::::R   I::::IC:::::C              
+#   F::::::FFFFFFFFFF     R::::R     R:::::R  I::::IC:::::C              
+#   F:::::F               R::::R     R:::::R  I::::IC:::::C              
+#   F:::::F               R::::R     R:::::R  I::::I C:::::C       CCCCCC
+# FF:::::::FF           RR:::::R     R:::::RII::::::IIC:::::CCCCCCCC::::C
+# F::::::::FF           R::::::R     R:::::RI::::::::I CC:::::::::::::::C
+# F::::::::FF           R::::::R     R:::::RI::::::::I   CCC::::::::::::C
+# FFFFFFFFFFF           RRRRRRRR     RRRRRRRIIIIIIIIII      CCCCCCCCCCCCC
 #
 #  0x30797263
 
